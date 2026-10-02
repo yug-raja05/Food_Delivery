@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zion Food Corner | Delicious Food at Affordable Prices | Bengaluru</title>
+  <meta name="description" content="Zion Food Corner in S R Nagar, Bengaluru offers delicious biryani, fried rice, noodles, chicken dishes, and popular Indian favourites at affordable prices." />
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍲</text></svg>" />
+
+  <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Main Stylesheet with Realtime Video Player & Floating Animations -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Floating Ambient Glowing Blobs -->
+  <div class="ambient-blob-container" aria-hidden="true">
+    <div class="ambient-blob ambient-blob-1"></div>
+    <div class="ambient-blob ambient-blob-2"></div>
+    <div class="ambient-blob ambient-blob-3"></div>
+  </div>
+
+  <!-- Top Status & Announcement Bar -->
+  <div class="top-status-bar" id="topStatusBar">
+    <div class="container">
+      <div class="status-bar-content">
+        <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+          <span class="status-badge-inline open-badge">
+            <span class="pulse-dot-green"></span>
+            <span>Open Now • 11:00 AM - 11:00 PM</span>
+          </span>
+          <span style="color: #9CA3AF; font-size: 0.8rem;">Dine-In, Takeaway & Fast Delivery • Call 098867 64280</span>
+        </div>
+        <div class="top-info-links">
+          <a href="tel:09886764280" class="top-link" id="top-phone-link">
+            <i class="fas fa-phone-volume"></i> 098867 64280
+          </a>
+          <span style="color: rgba(255,255,255,0.2);">|</span>
+          <span class="top-link">
+            <i class="fas fa-location-dot"></i> S R Nagar, Bengaluru
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header / Navigation Bar -->
+  <header class="site-navbar" id="siteNavbar">
+    <div class="container navbar-container">
+      <!-- Brand Logo -->
+      <a href="#home" class="brand-logo" id="nav-brand-logo">
+        <div class="brand-icon-box">
+          <i class="fas fa-bowl-food"></i>
+        </div>
+        <div class="brand-text-group">
+          <span class="brand-name">Zion <span>Food Corner</span></span>
+          <span class="brand-badge">Fast Food & Indian Favourites</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav aria-label="Main Navigation">
+        <ul class="nav-menu">
+          <li><a href="#home" class="nav-link active" id="nav-home">Home</a></li>
+          <li><a href="#menu" class="nav-link" id="nav-menu">Menu</a></li>
+          <li><a href="#about" class="nav-link" id="nav-about">About</a></li>
+          <li><a href="#feedback" class="nav-link" id="nav-feedback">Feedback</a></li>
+          <li><a href="#location" class="nav-link" id="nav-location">Location</a></li>
+          <li><a href="#contact" class="nav-link" id="nav-contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Nav Call to Action & Sign In / User Profile -->
+      <div class="nav-actions">
+        <!-- Sign In / User Pill (Replaced Call Now Button) -->
+        <div id="navAuthContainer">
+          <a href="login.html" class="nav-login-link" id="navLoginBtn">
+            <i class="fas fa-circle-user"></i> <span>Sign In</span>
+          </a>
+        </div>
+
+        <!-- Mobile Toggle Hamburger -->
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="mobile-drawer-content">
+      <div class="drawer-header">
+        <div class="brand-logo">
+          <div class="brand-icon-box" style="width: 38px; height: 38px; font-size: 1.1rem;">
+            <i class="fas fa-bowl-food"></i>
+          </div>
+          <div class="brand-text-group">
+            <span class="brand-name" style="font-size: 1.15rem;">Zion <span>Food Corner</span></span>
+          </div>
+        </div>
+        <button class="modal-close-btn" id="closeDrawerBtn" aria-label="Close menu" style="position: static;">
+          <i class="fas fa-xmark"></i>
+        </button>
+      </div>
+
+      <ul class="drawer-nav-list">
+        <li>
+          <a href="cart.html" class="drawer-nav-link" style="background: var(--primary-light); color: var(--primary); font-weight: 800;">
+            <span><i class="fas fa-cart-shopping" style="width: 24px; color: var(--primary);"></i> My Cart</span>
+            <span class="cart-badge-count" id="drawerCartCount" style="position: static;">0</span>
+          </a>
+        </li>
+        <li>
+          <a href="#home" class="drawer-nav-link active">
+            <span><i class="fas fa-house" style="width: 24px; color: var(--primary);"></i> Home</span>
+            <i class="fas fa-chevron-right" style="font-size: 0.8rem; color: var(--text-muted);"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#menu" class="drawer-nav-link">
+            <span><i class="fas fa-book-open" style="width: 24px; color: var(--primary);"></i> Menu</span>
+            <i class="fas fa-chevron-right" style="font-size: 0.8rem; color: var(--text-muted);"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#about" class="drawer-nav-link">
+            <span><i class="fas fa-circle-info" style="width: 24px; color: var(--primary);"></i> About</span>
+            <i class="fas fa-chevron-right" style="font-size: 0.8rem; color: var(--text-muted);"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#feedback" class="drawer-nav-link">
+            <span><i class="fas fa-comments" style="width: 24px; color: var(--primary);"></i> Feedback</span>
+            <i class="fas fa-chevron-right" style="font-size: 0.8rem; color: var(--text-muted);"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#location" class="drawer-nav-link">
+            <span><i class="fas fa-location-dot" style="width: 24px; color: var(--primary);"></i> Location</span>
+            <i class="fas fa-chevron-right" style="font-size: 0.8rem; color: var(--text-muted);"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#contact" class="drawer-nav-link">
+            <span><i class="fas fa-envelope" style="width: 24px; color: var(--primary);"></i> Contact</span>
+            <i class="fas fa-chevron-right" style="font-size: 0.8rem; color: var(--text-muted);"></i>
+          </a>
+        </li>
+      </ul>
+
+      <div class="drawer-actions">
+        <a href="#menu" class="btn btn-primary" style="width: 100%;">
+          <i class="fas fa-utensils"></i> View Menu
+        </a>
+        <a href="tel:09886764280" class="btn btn-call" style="width: 100%;">
+          <i class="fas fa-phone"></i> Call: 098867 64280
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- ==========================================================================
+         HERO SECTION WITH REALTIME VIDEO TRIGGER & FLOATING BADGES
+         ========================================================================== -->
+    <section class="hero-section" id="home">
+
+      <div class="container">
+        <div class="hero-grid">
+          <!-- Text Column -->
+          <div class="hero-content reveal">
+            <div class="hero-pill-badge">
+              <i class="fas fa-star"></i> 5.0 Star Rated Fast Food Corner
+            </div>
+            
+            <h1 class="hero-title">
+              Zion <span>Food Corner</span>
+            </h1>
+
+            <p class="hero-subtitle">
+              Delicious Food at Affordable Prices
+            </p>
+
+            <p class="hero-description">
+              Enjoy delicious biryani, fried rice, noodles, chicken dishes, and popular Indian favourites at affordable prices.
+            </p>
+
+            <div class="hero-cta-group">
+              <a href="#menu" class="btn btn-primary btn-lg" id="hero-btn-menu">
+                <i class="fas fa-utensils"></i> View Menu
+              </a>
+              <a href="tel:09886764280" class="btn btn-call btn-lg" id="hero-btn-call">
+                <i class="fas fa-phone"></i> Call Now
+              </a>
+            </div>
+
+            <div class="hero-rating-snippet">
+              <div class="rating-stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <div class="rating-text">
+                <strong id="heroRatingDisplay">5.0 / 5 Rating</strong> &bull; 3 Customer Reviews
+              </div>
+            </div>
+          </div>
+
+          <!-- Media Visual Column -->
+          <div class="hero-media-wrapper reveal reveal-delay-2">
+            <div class="hero-main-card" id="hero3DCard">
+              <img 
+                src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=1000&q=80" 
+                alt="Aromatic Chicken Biryani at Zion Food Corner" 
+                class="hero-img"
+              />
+              <div class="floating-badge-price">
+                ₹70.00
+              </div>
+              <div class="hero-image-overlay">
+                <span class="hero-image-caption">Signature Dish</span>
+                <h3 class="hero-image-dish">Special Chicken Biryani</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         RESTAURANT INFORMATION SECTION
+         ========================================================================== -->
+    <section class="info-section" id="info">
+      <div class="container">
+        <div class="info-cards-grid">
+          <!-- 1. Location Card -->
+          <div class="info-card reveal reveal-delay-1" id="info-card-address">
+            <div>
+              <div class="info-card-header">
+                <div class="info-icon-wrapper red">
+                  <i class="fas fa-location-dot"></i>
+                </div>
+                <div>
+                  <h3 class="info-card-title">Our Location</h3>
+                  <span class="info-card-tag">S R Nagar, Bengaluru</span>
+                </div>
+              </div>
+              <div class="info-card-body">
+                <p class="info-card-text">
+                  45, 4th Main Rd, Corporation, Ashwath Nagar, Sampangi Rama Nagara, S R Nagar, Bengaluru 560027
+                </p>
+              </div>
+            </div>
+            <div class="info-card-footer">
+              <a 
+                href="https://www.google.com/maps/search/?api=1&query=Zion+Food+Corner+45+4th+Main+Rd+Corporation+Ashwath+Nagar+Sampangi+Rama+Nagara+S+R+Nagar+Bengaluru+Karnataka+560027" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="info-card-action"
+                id="info-map-link"
+              >
+                <span>Get Directions</span> <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- 2. Opening Hours Card -->
+          <div class="info-card reveal reveal-delay-2" id="info-card-hours">
+            <div>
+              <div class="info-card-header">
+                <div class="info-icon-wrapper orange">
+                  <i class="fas fa-clock"></i>
+                </div>
+                <div>
+                  <h3 class="info-card-title">Opening Hours</h3>
+                  <span class="info-card-tag status-open-badge">
+                    <span class="pulse-dot"></span> Open Today
+                  </span>
+                </div>
+              </div>
+              <div class="info-card-body">
+                <div class="hours-schedule">
+                  <div class="hours-row">
+                    <span>Monday – Sunday:</span>
+                    <strong>11:00 AM – 11:00 PM</strong>
+                  </div>
+                </div>
+                <p class="info-card-subtext">
+                  Open daily for dine-in, takeaway & fast doorstep delivery!
+                </p>
+              </div>
+            </div>
+            <div class="info-card-footer">
+              <span class="info-badge-verified">
+                <i class="fas fa-motorcycle" style="color: var(--secondary-hover);"></i> Fast Kitchen Dispatch
+              </span>
+            </div>
+          </div>
+
+          <!-- 3. Call For Orders Card -->
+          <div class="info-card reveal reveal-delay-3" id="info-card-contact">
+            <div>
+              <div class="info-card-header">
+                <div class="info-icon-wrapper green">
+                  <i class="fas fa-phone-volume"></i>
+                </div>
+                <div>
+                  <h3 class="info-card-title">Call For Orders</h3>
+                  <span class="info-card-tag">Quick Support</span>
+                </div>
+              </div>
+              <div class="info-card-body">
+                <p class="info-card-phone">
+                  <a href="tel:09886764280" class="info-phone-link">098867 64280</a>
+                </p>
+                <p class="info-card-subtext">
+                  Call directly for counter pickups or special party bulk catering orders.
+                </p>
+              </div>
+            </div>
+            <div class="info-card-footer">
+              <a href="tel:09886764280" class="info-link" style="color: #059669;">
+                <span>Call Now</span> <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- 4. Guest Feedback & Rating Card -->
+          <div class="info-card reveal reveal-delay-4" id="info-card-feedback">
+            <div>
+              <div class="info-card-header">
+                <div class="info-icon-wrapper amber">
+                  <i class="fas fa-star"></i>
+                </div>
+                <div>
+                  <h3 class="info-card-title">Guest Feedback</h3>
+                  <span class="rating-pill-tag">
+                    <i class="fas fa-heart" style="color: #DC2626;"></i> 100% Loved
+                  </span>
+                </div>
+              </div>
+              <div class="info-card-body">
+                <div class="feedback-rating-display">
+                  <span class="feedback-score-num" id="infoFeedbackRating">5.0</span>
+                  <div class="feedback-stars-group">
+                    <div class="feedback-stars-gold" id="infoFeedbackStarsGroup">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <span class="feedback-meta-note"><span id="infoFeedbackReviewCount">3</span> Verified Reviews</span>
+                  </div>
+                </div>
+                <div class="feedback-details-list">
+                  <div class="feedback-detail-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Authentic Spices & Fresh Cuts</span>
+                  </div>
+                  <div class="feedback-detail-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>100% Hygienic Kitchen Prep</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="info-card-footer">
+              <span class="info-badge-verified">
+                <i class="fas fa-award" style="color: #F59E0B;"></i> Top Rated in S R Nagar
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SPECIAL MENU HIGHLIGHT / POPULAR ITEMS
+         ========================================================================== -->
+    <section class="popular-section" id="popular">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag"><i class="fas fa-video"></i> 4K Cooking Videos</span>
+          <h2 class="section-title">Popular Items</h2>
+          <p class="section-subtitle">Click on any dish to watch its authentic real-time live cooking footage from our kitchen!</p>
+        </div>
+
+        <div class="popular-grid" id="popularGrid">
+          <!-- Dynamically populated via app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         MAIN MENU SECTION
+         ========================================================================== -->
+    <section class="menu-section" id="menu">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag"><i class="fas fa-play"></i> Real-time Cooking Videos</span>
+          <h2 class="section-title">Our Menu</h2>
+          <p class="section-subtitle">Click any food card to watch the real-time live video of how it is freshly cooked!</p>
+        </div>
+
+        <!-- Filter and Search Controls -->
+        <div class="menu-filter-container reveal">
+          <!-- Category Tabs -->
+          <div class="category-tabs" id="categoryTabs">
+            <!-- Dynamically populated via app.js -->
+          </div>
+
+          <!-- Search & Diet Controls Bar -->
+          <div class="menu-controls-bar">
+            <div class="search-box-wrapper">
+              <i class="fas fa-magnifying-glass search-icon"></i>
+              <input 
+                type="text" 
+                id="menuSearchInput" 
+                class="search-input" 
+                placeholder="Search biryani, fried rice, noodles..." 
+                aria-label="Search menu items"
+              />
+              <button class="clear-search-btn" id="clearSearchBtn" aria-label="Clear search">
+                <i class="fas fa-xmark"></i>
+              </button>
+            </div>
+
+            <div class="dietary-toggles">
+              <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-muted); margin-right: 0.25rem;">Dietary:</span>
+              <button class="diet-toggle-btn veg" data-diet="veg" id="diet-btn-veg">
+                <span class="diet-icon-symbol veg"></span> Veg Only
+              </button>
+              <button class="diet-toggle-btn nonveg" data-diet="nonveg" id="diet-btn-nonveg">
+                <span class="diet-icon-symbol nonveg"></span> Non-Veg
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Menu Cards Grid -->
+        <div class="menu-grid" id="menuGrid">
+          <!-- Dynamically populated via app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         FROM OUR KITCHEN / RESTAURANT VISUALS SECTION
+         ========================================================================== -->
+    <section class="kitchen-section" id="kitchen">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag"><i class="fas fa-kitchen-set"></i> Authentic Experience</span>
+          <h2 class="section-title">From Our Kitchen</h2>
+          <p class="section-subtitle">Every dish is cooked on high heat with authentic Indian seasonings and time-tested fast-food traditions.</p>
+        </div>
+
+        <div class="kitchen-grid">
+          <!-- Gallery Item 1 -->
+          <div class="kitchen-card reveal reveal-delay-1">
+            <img 
+              src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80" 
+              alt="Street wok preparation" 
+              class="kitchen-img" 
+              loading="lazy"
+            />
+            <div class="kitchen-overlay">
+              <span class="kitchen-tag"><i class="fas fa-fire-burner"></i> Wok Specialties</span>
+              <h3 class="kitchen-title">High Flame Street Cooking</h3>
+            </div>
+          </div>
+
+          <!-- Gallery Item 2 -->
+          <div class="kitchen-card reveal reveal-delay-2">
+            <img 
+              src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" 
+              alt="Fresh spice blends" 
+              class="kitchen-img" 
+              loading="lazy"
+            />
+            <div class="kitchen-overlay">
+              <span class="kitchen-tag"><i class="fas fa-mortar-pestle"></i> Fresh Seasonings</span>
+              <h3 class="kitchen-title">Traditional Indian Masalas</h3>
+            </div>
+          </div>
+
+          <!-- Gallery Item 3 -->
+          <div class="kitchen-card reveal reveal-delay-3">
+            <img 
+              src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=800&q=80" 
+              alt="Golden crispy delicacies" 
+              class="kitchen-img" 
+              loading="lazy"
+            />
+            <div class="kitchen-overlay">
+              <span class="kitchen-tag"><i class="fas fa-utensils"></i> Tawa Specials</span>
+              <h3 class="kitchen-title">Fresh Parotas & Kababs</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         ABOUT SECTION
+         ========================================================================== -->
+    <section class="about-section" id="about">
+      <div class="container">
+        <div class="about-grid">
+          <!-- Left Visual Column with Floating Badge -->
+          <div class="about-image-wrapper reveal">
+            <div class="about-image-card">
+              <img 
+                src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=900&q=80" 
+                alt="Zion Food Corner Ambience" 
+                class="about-img"
+                loading="lazy"
+              />
+              <div class="about-stat-card">
+                <div class="about-stat-icon-badge">
+                  <i class="fas fa-star"></i>
+                </div>
+                <div>
+                  <strong class="stat-number" id="aboutStatRating">5.0 ★ Rating</strong>
+                  <span class="stat-label">Top Rated Fast Food in S R Nagar</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Content Column -->
+          <div class="about-content reveal reveal-delay-1">
+            <div>
+              <span class="section-tag"><i class="fas fa-heart" style="color: #DC2626;"></i> Our Story</span>
+              <h2 class="about-title">Welcome to <span>Zion Food Corner</span></h2>
+            </div>
+            
+            <p class="about-text-p">
+              <strong>Zion Food Corner</strong> is a beloved local fast-food restaurant located at S R Nagar, Bengaluru. We specialize in serving delicious, freshly cooked Indian favourites including aromatic biryani, wok-tossed fried rice, noodles, chicken dishes, and vegetarian delicacies at pocket-friendly everyday prices.
+            </p>
+            <p class="about-text-p">
+              Whether you are craving a late afternoon snack, a hearty lunch, or a quick dinner takeaway, our kitchen is always firing on high heat to deliver irresistible taste and speedy service.
+            </p>
+
+            <div class="about-features-list">
+              <div class="about-feat-item">
+                <i class="fas fa-fire"></i>
+                <span>Freshly Cooked To Order</span>
+              </div>
+              <div class="about-feat-item">
+                <i class="fas fa-wallet"></i>
+                <span>Pocket-Friendly Prices</span>
+              </div>
+              <div class="about-feat-item">
+                <i class="fas fa-motorcycle"></i>
+                <span>Fast Pickup & Delivery</span>
+              </div>
+              <div class="about-feat-item">
+                <i class="fas fa-shield-heart"></i>
+                <span>Clean & Hygienic Kitchen</span>
+              </div>
+            </div>
+
+            <div class="about-cta-row">
+              <a href="#menu" class="btn btn-primary btn-lg">
+                <i class="fas fa-utensils"></i> Explore Menu
+              </a>
+              <a href="tel:09886764280" class="btn btn-outline btn-lg">
+                <i class="fas fa-phone"></i> Call 098867 64280
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         CUSTOMER FEEDBACK & REVIEW SECTION
+         ========================================================================== -->
+    <section class="feedback-section" id="feedback">
+      <div class="container">
+        <!-- Section Header -->
+        <div class="section-header reveal">
+          <span class="section-tag"><i class="fas fa-heart"></i> Diners' Voice</span>
+          <h2 class="section-title">Customer Feedback</h2>
+          <p class="section-subtitle">Real dining experiences and authentic stories from food lovers at Zion Food Corner</p>
+        </div>
+
+        <!-- Live Rating Dashboard / Showcase Card -->
+        <div class="feedback-showcase-card reveal reveal-delay-1">
+          <!-- Left: Big Rating Number & Stars -->
+          <div class="feedback-score-hero">
+            <div class="feedback-big-rating">
+              <span class="feedback-score-number" id="feedbackAvgRating">5.0</span>
+              <span class="feedback-max-score">/ 5</span>
+            </div>
+            <div class="feedback-stars-display" id="overallStarsDisplay" aria-label="5 out of 5 stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <p class="feedback-total-label">
+              Based on <strong id="feedbackTotalCount">3 Customer Reviews</strong>
+            </p>
+            <div class="feedback-satisfaction-pill">
+              <i class="fas fa-shield-halved"></i> 100% Diner Satisfaction
+            </div>
+          </div>
+
+          <!-- Middle: Dynamic Rating Breakdown Bars -->
+          <div class="feedback-breakdown-container">
+            <div class="breakdown-title">Rating Breakdown</div>
+            <div class="rating-bar-row">
+              <span class="bar-star-label">5 <i class="fas fa-star"></i></span>
+              <div class="rating-progress-track">
+                <div class="rating-progress-fill" id="ratingBarFill5" style="width: 100%;"></div>
+              </div>
+              <span class="bar-count-label" id="ratingBarCount5">3</span>
+            </div>
+            <div class="rating-bar-row">
+              <span class="bar-star-label">4 <i class="fas fa-star"></i></span>
+              <div class="rating-progress-track">
+                <div class="rating-progress-fill" id="ratingBarFill4" style="width: 0%;"></div>
+              </div>
+              <span class="bar-count-label" id="ratingBarCount4">0</span>
+            </div>
+            <div class="rating-bar-row">
+              <span class="bar-star-label">3 <i class="fas fa-star"></i></span>
+              <div class="rating-progress-track">
+                <div class="rating-progress-fill" id="ratingBarFill3" style="width: 0%;"></div>
+              </div>
+              <span class="bar-count-label" id="ratingBarCount3">0</span>
+            </div>
+            <div class="rating-bar-row">
+              <span class="bar-star-label">2 <i class="fas fa-star"></i></span>
+              <div class="rating-progress-track">
+                <div class="rating-progress-fill" id="ratingBarFill2" style="width: 0%;"></div>
+              </div>
+              <span class="bar-count-label" id="ratingBarCount2">0</span>
+            </div>
+            <div class="rating-bar-row">
+              <span class="bar-star-label">1 <i class="fas fa-star"></i></span>
+              <div class="rating-progress-track">
+                <div class="rating-progress-fill" id="ratingBarFill1" style="width: 0%;"></div>
+              </div>
+              <span class="bar-count-label" id="ratingBarCount1">0</span>
+            </div>
+          </div>
+
+          <!-- Right: Trust Badges & Highlights -->
+          <div class="feedback-trust-features">
+            <div class="trust-feature-item">
+              <div class="trust-icon-box"><i class="fas fa-certificate"></i></div>
+              <div class="trust-feature-info">
+                <h4>Verified Diners</h4>
+                <p>100% authentic community reviews</p>
+              </div>
+            </div>
+            <div class="trust-feature-item">
+              <div class="trust-icon-box"><i class="fas fa-fire-burner"></i></div>
+              <div class="trust-feature-info">
+                <h4>Fresh & Handcrafted</h4>
+                <p>Freshly cooked with premium spices</p>
+              </div>
+            </div>
+            <div class="trust-feature-item">
+              <div class="trust-icon-box"><i class="fas fa-truck-fast"></i></div>
+              <div class="trust-feature-info">
+                <h4>Swift Service</h4>
+                <p>Hot, timely table & takeaway service</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Carousel Container -->
+        <div class="feedback-carousel-section reveal reveal-delay-1">
+          <div class="feedback-carousel-wrapper" id="feedbackCarouselWrapper">
+            <button type="button" class="carousel-nav-btn carousel-prev-btn" id="feedbackPrevBtn" aria-label="Previous Review">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+
+            <div class="feedback-carousel-track-container" id="feedbackCarouselContainer">
+              <!-- Dynamic Review Cards Rendered via JavaScript -->
+              <div class="feedback-loading-card" id="feedbackLoadingCard">
+                <div class="loading-spinner-ring"></div>
+                <p>Loading customer feedback...</p>
+              </div>
+            </div>
+
+            <button type="button" class="carousel-nav-btn carousel-next-btn" id="feedbackNextBtn" aria-label="Next Review">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+
+          <!-- Carousel Dots Indicators -->
+          <div class="carousel-dots-container" id="feedbackCarouselDots">
+            <!-- Dots dynamically created based on review count -->
+          </div>
+        </div>
+
+        <!-- Feedback Submission Form Card -->
+        <div class="feedback-form-container reveal reveal-delay-2" id="feedbackFormCard">
+          <div class="feedback-form-layout">
+            <!-- Left Side / Info Column -->
+            <div class="feedback-form-side-banner">
+              <div class="side-banner-badge"><i class="fas fa-feather-pointed"></i> Share Your Voice</div>
+              <h3 class="side-banner-title">Rate Your Experience</h3>
+              <p class="side-banner-desc">
+                Your feedback helps our master chefs craft mouth-watering dishes and maintain unmatched quality!
+              </p>
+              
+              <div class="side-banner-highlights">
+                <div class="highlight-chip"><i class="fas fa-check-circle"></i> Instant live publishing</div>
+                <div class="highlight-chip"><i class="fas fa-check-circle"></i> Rate specific dishes</div>
+                <div class="highlight-chip"><i class="fas fa-check-circle"></i> Direct feedback to chefs</div>
+              </div>
+
+              <div class="side-banner-quote">
+                <i class="fas fa-quote-left quote-icon"></i>
+                <p>“Good food is all the sweeter when shared with good friends.”</p>
+                <span>— Zion Food Corner Team</span>
+              </div>
+            </div>
+
+            <!-- Right Side / Form Fields -->
+            <div class="feedback-form-main">
+              <form id="feedbackForm" class="feedback-form" novalidate>
+                <div class="feedback-form-grid">
+                  <!-- Name Input -->
+                  <div class="form-group">
+                    <label for="feedbackName" class="form-label">
+                      <i class="fas fa-user-tag" style="color: var(--primary);"></i> Your Name <span class="required-mark">*</span>
+                    </label>
+                    <div class="input-icon-wrapper">
+                      <i class="fas fa-user input-lead-icon"></i>
+                      <input 
+                        type="text" 
+                        id="feedbackName" 
+                        name="name" 
+                        class="form-control feedback-input" 
+                        placeholder="Enter your name" 
+                        required 
+                        minlength="2" 
+                        maxlength="100" 
+                        autocomplete="name"
+                      />
+                    </div>
+                    <span class="form-field-error" id="feedbackNameError"></span>
+                  </div>
+
+                  <!-- Food Item Dropdown -->
+                  <div class="form-group">
+                    <label for="feedbackItemSelect" class="form-label">
+                      <i class="fas fa-utensils" style="color: var(--primary);"></i> Select Dish (Optional)
+                    </label>
+                    <div class="select-wrapper">
+                      <i class="fas fa-bowl-food select-lead-icon"></i>
+                      <select id="feedbackItemSelect" name="itemId" class="form-control feedback-select">
+                        <option value="overall" selected>Overall Restaurant Experience</option>
+                        <!-- Menu items dynamically populated -->
+                      </select>
+                      <i class="fas fa-chevron-down select-arrow-icon"></i>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Star Rating System -->
+                <div class="form-group rating-form-group">
+                  <label class="form-label">
+                    <i class="fas fa-star" style="color: #F59E0B;"></i> Your Rating <span class="required-mark">*</span>
+                  </label>
+                  <div class="star-rating-picker-wrapper">
+                    <div class="star-rating-picker" id="feedbackStarPicker" role="radiogroup" aria-label="Rating out of 5 stars">
+                      <button type="button" class="star-btn" data-rating="1" aria-label="1 Star"><i class="fas fa-star"></i></button>
+                      <button type="button" class="star-btn" data-rating="2" aria-label="2 Stars"><i class="fas fa-star"></i></button>
+                      <button type="button" class="star-btn" data-rating="3" aria-label="3 Stars"><i class="fas fa-star"></i></button>
+                      <button type="button" class="star-btn" data-rating="4" aria-label="4 Stars"><i class="fas fa-star"></i></button>
+                      <button type="button" class="star-btn" data-rating="5" aria-label="5 Stars"><i class="fas fa-star"></i></button>
+                    </div>
+                    <span class="rating-label-preview" id="ratingLabelPreview">Tap a star to rate</span>
+                  </div>
+                  <input type="hidden" id="feedbackRatingValue" name="rating" value="" required />
+                  <span class="form-field-error" id="feedbackRatingError"></span>
+                </div>
+
+                <!-- Feedback Message -->
+                <div class="form-group">
+                  <label for="feedbackMessage" class="form-label">
+                    <i class="fas fa-message" style="color: var(--primary);"></i> Your Review <span class="required-mark">*</span>
+                  </label>
+                  <textarea 
+                    id="feedbackMessage" 
+                    name="message" 
+                    class="form-control feedback-textarea" 
+                    rows="4" 
+                    placeholder="Tell us what you loved about your meal or service... (Minimum 5 characters)" 
+                    required 
+                    minlength="5" 
+                    maxlength="500"
+                  ></textarea>
+                  <div class="textarea-footer">
+                    <span class="form-field-error" id="feedbackMessageError"></span>
+                    <span class="char-counter" id="feedbackCharCounter">0 / 500</span>
+                  </div>
+                </div>
+
+                <!-- Feedback Status / Alert Message Container -->
+                <div class="feedback-alert-box" id="feedbackAlert" style="display: none;"></div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary btn-lg feedback-submit-btn" id="submitFeedbackBtn">
+                  <i class="fas fa-paper-plane"></i> <span>Submit Feedback</span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         LOCATION SECTION
+         ========================================================================== -->
+    <section class="location-section" id="location">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag"><i class="fas fa-map-location-dot"></i> Find Us</span>
+          <h2 class="section-title">Location & Directions</h2>
+          <p class="section-subtitle">Visit Zion Food Corner in S R Nagar, Bengaluru.</p>
+        </div>
+
+        <div class="location-grid">
+          <!-- Left Info Card -->
+          <div class="location-card-main reveal reveal-delay-1">
+            <div>
+              <div class="location-header-block">
+                <span class="location-tag"><i class="fas fa-store"></i> Restaurant Address</span>
+                <h3 class="location-name">Zion Food Corner</h3>
+              </div>
+
+              <div class="location-address-box">
+                <i class="fas fa-location-dot"></i>
+                <div class="address-lines">
+                  <p>45, 4th Main Rd, Corporation,</p>
+                  <p>Ashwath Nagar, Sampangi Rama Nagara,</p>
+                  <p><strong>S R Nagar, Bengaluru,</strong></p>
+                  <p>Karnataka 560027</p>
+                </div>
+              </div>
+
+              <div style="margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.92rem; color: var(--text-secondary);">
+                  <i class="fas fa-phone" style="color: #10B981; width: 20px;"></i>
+                  <span>Phone: <a href="tel:09886764280" style="font-weight: 700; color: var(--dark-charcoal);">098867 64280</a></span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.92rem; color: var(--text-secondary);">
+                  <i class="fas fa-circle-check" style="color: #10B981; width: 20px;"></i>
+                  <span>Status: <strong style="color: #10B981;">Open Today (11:00 AM - 11:00 PM)</strong></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="location-actions">
+              <a 
+                href="https://www.google.com/maps/search/?api=1&query=Zion+Food+Corner+45+4th+Main+Rd+Corporation+Ashwath+Nagar+Sampangi+Rama+Nagara+S+R+Nagar+Bengaluru+Karnataka+560027" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="btn btn-primary"
+                id="get-directions-btn"
+              >
+                <i class="fas fa-diamond-turn-right"></i> Get Directions
+              </a>
+              <a href="tel:09886764280" class="btn btn-outline" id="location-call-btn">
+                <i class="fas fa-phone"></i> Call Restaurant
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Map Visual UI -->
+          <div class="map-display-card reveal reveal-delay-2">
+            <div class="map-embed-placeholder">
+              <div class="map-overlay-pin">
+                <div class="map-pin-icon">
+                  <i class="fas fa-utensils"></i>
+                </div>
+                <div class="map-pin-info">
+                  <span class="map-pin-title">Zion Food Corner</span>
+                  <span class="map-pin-subtitle">S R Nagar, Bengaluru</span>
+                </div>
+              </div>
+            </div>
+            <div class="map-card-footer">
+              <span><i class="fas fa-map-pin" style="color: var(--primary);"></i> Ashwath Nagar, Sampangi Rama Nagara</span>
+              <a 
+                href="https://www.google.com/maps/search/?api=1&query=Zion+Food+Corner+45+4th+Main+Rd+Corporation+Ashwath+Nagar+Sampangi+Rama+Nagara+S+R+Nagar+Bengaluru+Karnataka+560027" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                style="font-size: 0.85rem; font-weight: 700; color: var(--primary);"
+              >
+                Open Google Maps <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         CONTACT SECTION
+         ========================================================================== -->
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag"><i class="fas fa-headset"></i> Get In Touch</span>
+          <h2 class="section-title">Contact Zion Food Corner</h2>
+          <p class="section-subtitle">Reach out directly for queries, party orders, or location assistance.</p>
+        </div>
+
+        <div class="contact-cards-grid">
+          <!-- Phone Card -->
+          <div class="contact-card reveal reveal-delay-1">
+            <div class="contact-icon-large phone">
+              <i class="fas fa-phone-volume"></i>
+            </div>
+            <h3 class="contact-card-title">Call Us</h3>
+            <p class="contact-card-value">098867 64280</p>
+            <p class="contact-card-desc">Call directly to speak with the restaurant team for any queries.</p>
+            <a href="tel:09886764280" class="btn btn-call btn-sm">
+              <i class="fas fa-phone"></i> Call Now
+            </a>
+          </div>
+
+          <!-- Rating & Reviews Card -->
+          <div class="contact-card reveal reveal-delay-2">
+            <div class="contact-icon-large star">
+              <i class="fas fa-star"></i>
+            </div>
+            <h3 class="contact-card-title">Customer Rating</h3>
+            <p class="contact-card-value">5.0 ★ Rating</p>
+            <p class="contact-card-desc">Proudly holding a top rating with 3 positive local customer reviews.</p>
+            <span class="btn btn-outline btn-sm" style="cursor: default;">
+              <i class="fas fa-check-double" style="color: #10B981;"></i> 3 Reviews
+            </span>
+          </div>
+
+          <!-- Location Card -->
+          <div class="contact-card reveal reveal-delay-3">
+            <div class="contact-icon-large location">
+              <i class="fas fa-location-dot"></i>
+            </div>
+            <h3 class="contact-card-title">Visit Location</h3>
+            <p class="contact-card-value">S R Nagar</p>
+            <p class="contact-card-desc">45, 4th Main Rd, Ashwath Nagar, Sampangi Rama Nagara, Bengaluru.</p>
+            <a href="#location" class="btn btn-outline btn-sm">
+              <i class="fas fa-map"></i> View Location
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Brand Info -->
+        <div class="footer-brand-column">
+          <div class="footer-logo">
+            <div class="brand-icon-box">
+              <i class="fas fa-bowl-food"></i>
+            </div>
+            <div class="brand-text-group">
+              <span class="brand-name">Zion <span>Food Corner</span></span>
+            </div>
+          </div>
+          <p class="footer-tagline">"Delicious Food • Affordable Prices"</p>
+          <p class="footer-desc">
+            Local fast-food restaurant serving biryani, fried rice, noodles, chicken items, and popular Indian favourites in Bengaluru.
+          </p>
+          <div>
+            <span class="footer-status-pill open">
+              <span class="pulse-dot-green"></span> Status: Open Now (11 AM - 11 PM)
+            </span>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4 class="footer-column-title">Quick Links</h4>
+          <ul class="footer-nav-list">
+            <li><a href="#home" class="footer-nav-link">Home</a></li>
+            <li><a href="#menu" class="footer-nav-link">Our Menu</a></li>
+            <li><a href="#popular" class="footer-nav-link">Popular Items</a></li>
+            <li><a href="#about" class="footer-nav-link">About Us</a></li>
+            <li><a href="#location" class="footer-nav-link">Location</a></li>
+            <li><a href="#contact" class="footer-nav-link">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Categories -->
+        <div>
+          <h4 class="footer-column-title">Menu Categories</h4>
+          <ul class="footer-nav-list">
+            <li><a href="#menu" class="footer-nav-link">Rice & Biryani</a></li>
+            <li><a href="#menu" class="footer-nav-link">Fried Rice</a></li>
+            <li><a href="#menu" class="footer-nav-link">Noodles</a></li>
+            <li><a href="#menu" class="footer-nav-link">Chicken Items</a></li>
+            <li><a href="#menu" class="footer-nav-link">Veg Items</a></li>
+            <li><a href="#menu" class="footer-nav-link">Indian Favourites</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Details -->
+        <div>
+          <h4 class="footer-column-title">Contact Details</h4>
+          <div class="footer-contact-info">
+            <div class="footer-contact-item">
+              <i class="fas fa-phone"></i>
+              <div>
+                <a href="tel:09886764280" style="font-weight: 700; color: #FFFFFF;">098867 64280</a>
+                <p style="font-size: 0.8rem; color: #9CA3AF;">Customer Assistance</p>
+              </div>
+            </div>
+
+            <div class="footer-contact-item">
+              <i class="fas fa-location-dot"></i>
+              <div>
+                <p>45, 4th Main Rd, Corporation,</p>
+                <p>Ashwath Nagar, Sampangi Rama Nagara,</p>
+                <p><strong>S R Nagar, Bengaluru, Karnataka 560027</strong></p>
+              </div>
+            </div>
+
+            <div class="footer-contact-item">
+              <i class="fas fa-star" style="color: #F59E0B;"></i>
+              <div>
+                <p><strong id="footerFeedbackRating">5.0 / 5.0 Rating ⭐⭐⭐⭐⭐</strong></p>
+                <p style="font-size: 0.8rem; color: #9CA3AF;" id="footerFeedbackReviewsNote">Based on 3 Verified Customer Reviews</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom-bar">
+        <p>&copy; 2026 Zion Food Corner. All rights reserved.</p>
+        <p>Frontend Demonstration Website &bull; S R Nagar, Bengaluru, Karnataka</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- Scripts -->
+  <script src="api.js"></script>
+  <script src="menu-data.js"></script>
+  <script src="cart-manager.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

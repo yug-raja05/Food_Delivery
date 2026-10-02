@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login & Sign Up | Zion Food Corner</title>
+  <meta name="description" content="Sign in or create an account at Zion Food Corner for instant food ordering, exclusive discounts, and express checkout." />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  
+  <!-- Main Design System Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="cart-page-body">
+
+  <!-- Floating Ambient Glowing Blobs -->
+  <div class="ambient-blob-container" aria-hidden="true">
+    <div class="ambient-blob ambient-blob-1"></div>
+    <div class="ambient-blob ambient-blob-2"></div>
+    <div class="ambient-blob ambient-blob-3"></div>
+  </div>
+
+  <!-- Minimal Header / Brand Bar -->
+  <header class="cart-navbar">
+    <div class="container cart-navbar-container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon-box">
+          <i class="fas fa-bowl-food"></i>
+        </div>
+        <div class="brand-text-group">
+          <span class="brand-name">Zion <span>Food Corner</span></span>
+          <span class="brand-badge">Fast Food & Indian Favourites</span>
+        </div>
+      </a>
+
+      <div class="cart-nav-actions">
+        <a href="index.html" class="btn btn-outline btn-sm">
+          <i class="fas fa-arrow-left"></i> Back to Menu
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Auth Main Section -->
+  <main class="auth-main-section">
+    <div class="container auth-container">
+      <div class="auth-card" id="authCard">
+        <!-- Auth Header -->
+        <div class="auth-header">
+          <div class="auth-icon-badge">
+            <i class="fas fa-user-lock"></i>
+          </div>
+          <h1 class="auth-main-title" id="authMainTitle">Welcome to Zion</h1>
+          <p class="auth-subtitle" id="authSubtitle">Sign in to your account for faster ordering and saved delivery details</p>
+        </div>
+
+        <!-- Auth Tabs Switcher -->
+        <div class="auth-tabs-bar">
+          <button type="button" class="auth-tab-btn active" id="tabLoginBtn" onclick="switchAuthTab('login')">
+            <i class="fas fa-right-to-bracket"></i> Sign In
+          </button>
+          <button type="button" class="auth-tab-btn" id="tabRegisterBtn" onclick="switchAuthTab('register')">
+            <i class="fas fa-user-plus"></i> Create Account
+          </button>
+        </div>
+
+        <!-- Alert Notification Box -->
+        <div class="auth-alert-box" id="authAlertBox" style="display: none;">
+          <i class="fas fa-circle-exclamation" id="authAlertIcon"></i>
+          <span id="authAlertMsg"></span>
+        </div>
+
+        <!-- 1. LOGIN FORM -->
+        <form class="auth-form" id="loginForm" onsubmit="handleLoginSubmit(event)">
+          <div class="form-group">
+            <label class="form-label" for="loginEmail">Email Address <span style="color: var(--primary);">*</span></label>
+            <div class="auth-input-wrapper">
+              <i class="fas fa-envelope auth-field-icon"></i>
+              <input 
+                type="email" 
+                id="loginEmail" 
+                class="form-input auth-input" 
+                placeholder="name@example.com" 
+                required 
+                autocomplete="email"
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <label class="form-label" for="loginPassword">Password <span style="color: var(--primary);">*</span></label>
+            </div>
+            <div class="auth-input-wrapper">
+              <i class="fas fa-lock auth-field-icon"></i>
+              <input 
+                type="password" 
+                id="loginPassword" 
+                class="form-input auth-input" 
+                placeholder="••••••••" 
+                required 
+                autocomplete="current-password"
+              />
+              <button type="button" class="btn-toggle-password" onclick="togglePasswordVisibility('loginPassword', this)" aria-label="Toggle password visibility">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-auth-submit" id="loginSubmitBtn">
+            <span>Sign In to Your Account</span> <i class="fas fa-arrow-right"></i>
+          </button>
+        </form>
+
+        <!-- 2. REGISTER FORM -->
+        <form class="auth-form" id="registerForm" style="display: none;" onsubmit="handleRegisterSubmit(event)">
+          <div class="form-group">
+            <label class="form-label" for="regName">Full Name <span style="color: var(--primary);">*</span></label>
+            <div class="auth-input-wrapper">
+              <i class="fas fa-user auth-field-icon"></i>
+              <input 
+                type="text" 
+                id="regName" 
+                class="form-input auth-input" 
+                placeholder="Aman Sharma" 
+                required 
+                autocomplete="name"
+              />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="regEmail">Email Address <span style="color: var(--primary);">*</span></label>
+              <div class="auth-input-wrapper">
+                <i class="fas fa-envelope auth-field-icon"></i>
+                <input 
+                  type="email" 
+                  id="regEmail" 
+                  class="form-input auth-input" 
+                  placeholder="name@example.com" 
+                  required 
+                  autocomplete="email"
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="regPhone">Phone Number <span style="color: var(--primary);">*</span></label>
+              <div class="auth-input-wrapper">
+                <i class="fas fa-phone auth-field-icon"></i>
+                <input 
+                  type="tel" 
+                  id="regPhone" 
+                  class="form-input auth-input" 
+                  placeholder="9876543210" 
+                  required 
+                  autocomplete="tel"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="regPassword">Create Password <span style="color: var(--primary);">* (min 6 characters)</span></label>
+            <div class="auth-input-wrapper">
+              <i class="fas fa-lock auth-field-icon"></i>
+              <input 
+                type="password" 
+                id="regPassword" 
+                class="form-input auth-input" 
+                placeholder="••••••••" 
+                required 
+                minlength="6"
+                autocomplete="new-password"
+              />
+              <button type="button" class="btn-toggle-password" onclick="togglePasswordVisibility('regPassword', this)" aria-label="Toggle password visibility">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="regAddress">Default Delivery Address (Optional)</label>
+            <div class="auth-input-wrapper">
+              <i class="fas fa-location-dot auth-field-icon"></i>
+              <input 
+                type="text" 
+                id="regAddress" 
+                class="form-input auth-input" 
+                placeholder="Flat / House No, Street, S R Nagar" 
+              />
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-auth-submit" id="registerSubmitBtn">
+            <span>Create Account & Continue</span> <i class="fas fa-arrow-right"></i>
+          </button>
+        </form>
+
+        <!-- Perks List -->
+        <div class="auth-perks-box">
+          <div class="auth-perk-item">
+            <i class="fas fa-bolt" style="color: var(--secondary);"></i>
+            <span>1-Click Express Checkout</span>
+          </div>
+          <div class="auth-perk-item">
+            <i class="fas fa-tag" style="color: var(--primary);"></i>
+            <span>Exclusive Promo Coupons</span>
+          </div>
+          <div class="auth-perk-item">
+            <i class="fas fa-shield-halved" style="color: #10B981;"></i>
+            <span>100% Secure Server</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- Scripts -->
+  <script src="api.js"></script>
+  <script src="js/api.js"></script>
+  <script src="cart-manager.js"></script>
+  <script src="js/cart-manager.js"></script>
+  <script src="auth.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

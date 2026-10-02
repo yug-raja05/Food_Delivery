@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Cart | Zion Food Corner - Delicious Food at Affordable Prices</title>
+  <meta name="description" content="Review your selected delicious dishes, customize quantities, apply coupon codes, and place your order from Zion Food Corner, Bengaluru." />
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍲</text></svg>" />
+
+  <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="cart-page-body">
+
+  <!-- Ambient Glowing Blobs -->
+  <div class="ambient-blob-container" aria-hidden="true">
+    <div class="ambient-blob ambient-blob-1"></div>
+    <div class="ambient-blob ambient-blob-2"></div>
+    <div class="ambient-blob ambient-blob-3"></div>
+  </div>
+
+  <!-- Cart Navigation Header -->
+  <header class="cart-navbar">
+    <div class="container cart-navbar-container">
+      <a href="index.html" class="brand-logo" id="cart-brand-logo">
+        <div class="brand-icon-box">
+          <i class="fas fa-bowl-food"></i>
+        </div>
+        <div class="brand-text-group">
+          <span class="brand-name">Zion <span>Food Corner</span></span>
+          <span class="brand-badge">Fast Food & Indian Favourites</span>
+        </div>
+      </a>
+
+      <!-- Progress Step Indicator -->
+      <div class="cart-steps-indicator">
+        <div class="cart-step active">
+          <span class="step-num"><i class="fas fa-cart-shopping"></i></span>
+          <span class="step-label">1. Cart</span>
+        </div>
+        <div class="step-divider"></div>
+        <div class="cart-step" id="stepIndicatorDetails">
+          <span class="step-num">2</span>
+          <span class="step-label">2. Details</span>
+        </div>
+        <div class="step-divider"></div>
+        <div class="cart-step" id="stepIndicatorDone">
+          <span class="step-num"><i class="fas fa-check"></i></span>
+          <span class="step-label">3. Success</span>
+        </div>
+      </div>
+
+      <!-- Action Back to Menu & Sign In -->
+      <div class="cart-nav-actions">
+        <a href="index.html#menu" class="btn btn-outline btn-sm" id="btnBackToMenu">
+          <i class="fas fa-arrow-left"></i> <span>Back to Menu</span>
+        </a>
+
+        <!-- Auth Sign In / User Pill (Replaced Call Button) -->
+        <div id="navCartAuthContainer">
+          <a href="login.html?redirect=cart.html" class="nav-login-link" id="cartNavLoginBtn">
+            <i class="fas fa-circle-user"></i> <span>Sign In</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Cart Section -->
+  <main class="cart-main-section">
+    <div class="container">
+      
+      <!-- Top Cart Breadcrumb & Title -->
+      <div class="cart-page-header">
+        <div class="cart-title-wrap">
+          <h1 class="cart-page-title">
+            <i class="fas fa-bag-shopping" style="color: var(--primary);"></i> My Food Cart
+          </h1>
+          <p class="cart-page-subtitle">Review your selected items and finalize your delicious meal</p>
+        </div>
+        <div class="cart-header-actions" id="cartHeaderActions">
+          <button class="btn-clear-cart" id="btnClearCart" onclick="handleClearCart()">
+            <i class="fas fa-trash-can"></i> Clear Cart
+          </button>
+        </div>
+      </div>
+
+      <!-- EMPTY CART STATE -->
+      <div class="cart-empty-view" id="cartEmptyView" style="display: none;">
+        <div class="cart-empty-card">
+          <div class="empty-cart-icon-box">
+            <i class="fas fa-bowl-rice"></i>
+            <span class="empty-sparkle sparkle-1">✨</span>
+            <span class="empty-sparkle sparkle-2">🔥</span>
+          </div>
+          <h2 class="empty-cart-title">Your Cart is Empty</h2>
+          <p class="empty-cart-desc">
+            You haven't added any delicious dishes from Zion Food Corner yet. Browse our biryani, crispy fried rice, hot noodles, and succulent chicken dishes!
+          </p>
+          <div class="empty-cart-actions">
+            <a href="index.html#menu" class="btn btn-primary btn-lg" id="btnExploreMenuEmpty">
+              <i class="fas fa-utensils"></i> Explore Our Menu
+            </a>
+            <a href="index.html#popular" class="btn btn-outline btn-lg" id="btnExplorePopularEmpty">
+              <i class="fas fa-fire"></i> View Popular Items
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- FILLED CART VIEW (2 COLUMNS) -->
+      <div class="cart-content-grid" id="cartFilledView">
+        
+        <!-- LEFT COLUMN: Selected Items & Order Preferences -->
+        <div class="cart-left-column">
+          
+          <!-- Free Delivery Progress Tracker -->
+          <div class="free-delivery-tracker" id="deliveryTracker">
+            <div class="delivery-tracker-header">
+              <span class="tracker-icon"><i class="fas fa-truck-fast"></i></span>
+              <span class="tracker-text" id="trackerText">Add ₹180.00 more to get <strong>FREE Delivery</strong>!</span>
+            </div>
+            <div class="delivery-tracker-bar">
+              <div class="delivery-tracker-fill" id="trackerFill" style="width: 35%;"></div>
+            </div>
+          </div>
+
+          <!-- Items Container Card -->
+          <div class="cart-card">
+            <div class="cart-card-header">
+              <h2 class="cart-card-title">
+                <i class="fas fa-utensils"></i> Selected Dishes (<span id="cartTotalItemsCount">0</span>)
+              </h2>
+              <a href="index.html#menu" class="link-add-more">
+                <i class="fas fa-plus"></i> Add More Items
+              </a>
+            </div>
+
+            <!-- List of items rendered dynamically by cart.js -->
+            <div class="cart-items-list" id="cartItemsList">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+
+          <!-- Special Cooking Request / Instructions -->
+          <div class="cart-card">
+            <div class="cart-card-header">
+              <h2 class="cart-card-title">
+                <i class="fas fa-comment-dots"></i> Cooking & Packaging Instructions
+              </h2>
+            </div>
+            <div class="instruction-box">
+              <textarea 
+                id="cookingInstructions" 
+                class="instruction-textarea" 
+                rows="2" 
+                placeholder="E.g., Make it medium spicy, don't add onions, pack extra raita, less oil..."
+              ></textarea>
+            </div>
+          </div>
+
+          <!-- Order Type & Customer Details Card -->
+          <div class="cart-card">
+            <div class="cart-card-header">
+              <h2 class="cart-card-title">
+                <i class="fas fa-location-dot"></i> Order Type & Details
+              </h2>
+            </div>
+
+            <!-- Order Mode Switcher -->
+            <div class="order-mode-selector">
+              <button class="order-mode-btn active" data-mode="takeaway" onclick="switchOrderMode('takeaway')">
+                <i class="fas fa-bag-shopping"></i>
+                <div class="order-mode-info">
+                  <strong>Takeaway / Pickup</strong>
+                  <span>Ready in 15-20 mins</span>
+                </div>
+              </button>
+              <button class="order-mode-btn" data-mode="delivery" onclick="switchOrderMode('delivery')">
+                <i class="fas fa-motorcycle"></i>
+                <div class="order-mode-info">
+                  <strong>Home Delivery</strong>
+                  <span>30-40 mins to your door</span>
+                </div>
+              </button>
+              <button class="order-mode-btn" data-mode="dinein" onclick="switchOrderMode('dinein')">
+                <i class="fas fa-chair"></i>
+                <div class="order-mode-info">
+                  <strong>Dine-In Table</strong>
+                  <span>Fast table service</span>
+                </div>
+              </button>
+            </div>
+
+            <!-- Customer Auth Status Banner -->
+            <div id="cartCustomerAuthBanner" style="margin-bottom: 1rem;"></div>
+
+            <!-- Customer Details Form -->
+            <form id="orderCustomerForm" class="customer-details-form" onsubmit="handlePlaceOrder(event)">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="custName" class="form-label">Your Name *</label>
+                  <input type="text" id="custName" class="form-input" placeholder="e.g. Rahul Sharma" required />
+                </div>
+                <div class="form-group">
+                  <label for="custPhone" class="form-label">Phone Number *</label>
+                  <input type="tel" id="custPhone" class="form-input" placeholder="e.g. 98867 64280" required pattern="[0-9\s+-]{10,14}" />
+                </div>
+              </div>
+
+              <!-- Conditional Delivery Address Fields -->
+              <div id="deliveryFields" style="display: none; margin-top: 1rem;">
+                <div class="form-group">
+                  <label for="custAddress" class="form-label">Delivery Address *</label>
+                  <input type="text" id="custAddress" class="form-input" placeholder="Flat/House No., Street, Building, S R Nagar area" />
+                </div>
+                <div class="form-row" style="margin-top: 0.85rem;">
+                  <div class="form-group">
+                    <label for="custLandmark" class="form-label">Landmark</label>
+                    <input type="text" id="custLandmark" class="form-input" placeholder="Near Ashwath Nagar park / Corporation" />
+                  </div>
+                  <div class="form-group">
+                    <label for="custPincode" class="form-label">Pincode</label>
+                    <input type="text" id="custPincode" class="form-input" value="560027" placeholder="560027" />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Conditional Dine-In Table Field -->
+              <div id="dineinFields" style="display: none; margin-top: 1rem;">
+                <div class="form-group">
+                  <label for="tableNumber" class="form-label">Table Number *</label>
+                  <input type="number" id="tableNumber" class="form-input" placeholder="e.g. 4" min="1" max="30" />
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: Promo Codes, Bill Breakdown & Place Order -->
+        <div class="cart-right-column">
+          
+          <!-- Coupon Code Box -->
+          <div class="cart-card promo-card">
+            <div class="cart-card-header">
+              <h2 class="cart-card-title">
+                <i class="fas fa-tag"></i> Apply Coupon Code
+              </h2>
+            </div>
+            
+            <div class="coupon-input-group" id="couponInputGroup">
+              <div class="coupon-field-wrap">
+                <i class="fas fa-ticket coupon-icon"></i>
+                <input 
+                  type="text" 
+                  id="couponCodeInput" 
+                  class="coupon-input" 
+                  placeholder="Enter coupon (e.g. ZION50)" 
+                  autocomplete="off"
+                />
+              </div>
+              <button class="btn btn-primary btn-sm" id="btnApplyCoupon" onclick="handleApplyCoupon()">
+                Apply
+              </button>
+            </div>
+
+            <!-- Active Applied Coupon Tag -->
+            <div class="applied-coupon-pill" id="appliedCouponPill" style="display: none;">
+              <div class="coupon-pill-info">
+                <i class="fas fa-circle-check" style="color: #10B981;"></i>
+                <span id="appliedCouponName">ZION50 applied</span>
+                <span class="coupon-pill-desc" id="appliedCouponDesc">₹50 OFF</span>
+              </div>
+              <button class="btn-remove-coupon" onclick="handleRemoveCoupon()" aria-label="Remove coupon">
+                <i class="fas fa-xmark"></i>
+              </button>
+            </div>
+
+            <!-- Available Coupons Suggestion Pills -->
+            <div class="coupon-chips-list">
+              <span class="chip-label">Available Offers:</span>
+              <button class="coupon-chip" onclick="fillCoupon('ZION50')">
+                <span class="chip-code">ZION50</span> • ₹50 OFF
+              </button>
+              <button class="coupon-chip" onclick="fillCoupon('WELCOME10')">
+                <span class="chip-code">WELCOME10</span> • 10% OFF
+              </button>
+              <button class="coupon-chip" onclick="fillCoupon('BIRYANI20')">
+                <span class="chip-code">BIRYANI20</span> • ₹20 OFF
+              </button>
+            </div>
+          </div>
+
+          <!-- Bill Summary Card -->
+          <div class="cart-card bill-card">
+            <div class="cart-card-header">
+              <h2 class="cart-card-title">
+                <i class="fas fa-receipt"></i> Bill Summary
+              </h2>
+              <span class="status-badge-inline open-badge" style="font-size: 0.72rem; padding: 0.2rem 0.6rem;">
+                <span class="pulse-dot-green"></span> Open & Cooking
+              </span>
+            </div>
+
+            <div class="bill-breakdown">
+              <div class="bill-row">
+                <span class="bill-row-label">Item Total (<span id="billItemCount">0</span> items)</span>
+                <span class="bill-row-val" id="billSubtotal">₹0.00</span>
+              </div>
+              <div class="bill-row">
+                <span class="bill-row-label">Packaging & Handling</span>
+                <span class="bill-row-val" id="billPackaging">₹15.00</span>
+              </div>
+              <div class="bill-row">
+                <span class="bill-row-label">
+                  Delivery Partner Fee 
+                  <i class="fas fa-circle-info" title="Free on orders above ₹250" style="color: var(--text-muted); font-size: 0.75rem;"></i>
+                </span>
+                <span class="bill-row-val" id="billDelivery">FREE</span>
+              </div>
+              <div class="bill-row">
+                <span class="bill-row-label">GST & Restaurant Taxes (5%)</span>
+                <span class="bill-row-val" id="billTax">₹0.00</span>
+              </div>
+              
+              <!-- Discount Row -->
+              <div class="bill-row discount-row" id="billDiscountRow" style="display: none;">
+                <span class="bill-row-label" style="color: #059669;">
+                  <i class="fas fa-gift"></i> Coupon Discount
+                </span>
+                <span class="bill-row-val" style="color: #059669; font-weight: 800;" id="billDiscountVal">-₹0.00</span>
+              </div>
+
+              <!-- Grand Total Row -->
+              <div class="bill-divider"></div>
+              
+              <div class="bill-row total-row">
+                <div class="total-label-group">
+                  <span class="total-title">Total Amount</span>
+                  <span class="total-tax-note">Inclusive of all taxes</span>
+                </div>
+                <div class="total-amount-pill" id="billGrandTotal">
+                  ₹0.00
+                </div>
+              </div>
+            </div>
+
+            <!-- Payment Method Selector -->
+            <div class="payment-method-box">
+              <span class="payment-box-title">Choose Payment Method:</span>
+              <div class="payment-options-grid">
+                <label class="payment-option-label">
+                  <input type="radio" name="paymentMethod" value="cod" checked />
+                  <div class="payment-option-card">
+                    <i class="fas fa-hand-holding-dollar"></i>
+                    <span>Cash on Delivery / Counter</span>
+                  </div>
+                </label>
+                <label class="payment-option-label">
+                  <input type="radio" name="paymentMethod" value="upi" />
+                  <div class="payment-option-card">
+                    <i class="fas fa-qrcode"></i>
+                    <span>UPI / QR Code (GPay, PhonePe)</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- Big Place Order Button -->
+            <button class="btn btn-primary btn-place-order" id="btnPlaceOrder" onclick="triggerFormSubmit()">
+              <span>Place Order</span>
+              <div class="btn-price-tag">
+                <span id="btnPlaceOrderTotal">₹0.00</span>
+                <i class="fas fa-arrow-right"></i>
+              </div>
+            </button>
+
+            <!-- Trust & Safety Badges -->
+            <div class="cart-trust-badges">
+              <div class="trust-badge-item">
+                <i class="fas fa-shield-halved"></i> 100% Safe & Hygienic
+              </div>
+              <div class="trust-badge-item">
+                <i class="fas fa-fire-burner"></i> Freshly Cooked On Order
+              </div>
+              <div class="trust-badge-item">
+                <i class="fas fa-star" style="color: #F59E0B;"></i> 5.0★ Quality Rated
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- SUCCESSFUL ORDER MODAL -->
+  <div class="cart-modal-overlay" id="orderSuccessModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="cart-modal-container success-modal-card" style="position: relative;">
+      <button class="modal-close-btn" id="closeSuccessModalBtn" aria-label="Close confirmation" style="top: 0.75rem; right: 0.75rem; width: 34px; height: 34px; font-size: 1rem;">
+        <i class="fas fa-xmark"></i>
+      </button>
+
+      <div class="success-animation-box">
+        <div class="success-checkmark-circle">
+          <i class="fas fa-check"></i>
+        </div>
+        <div class="confetti-dot dot-1"></div>
+        <div class="confetti-dot dot-2"></div>
+        <div class="confetti-dot dot-3"></div>
+        <div class="confetti-dot dot-4"></div>
+      </div>
+
+      <div class="success-modal-header">
+        <span class="success-badge"><i class="fas fa-fire-flame-curved"></i> Order Received & Cooking</span>
+        <h2 class="success-modal-title">Thank You for Your Order!</h2>
+        <p class="success-modal-desc" id="successOrderGreeting">
+          Your order has been sent directly to the kitchen at Zion Food Corner.
+        </p>
+      </div>
+
+      <!-- Receipt Box -->
+      <div class="success-receipt-box">
+        <div class="receipt-header-row">
+          <div>
+            <span class="receipt-label">Order Number</span>
+            <strong class="receipt-order-id" id="successOrderId">#ZFC-8492</strong>
+          </div>
+          <div style="text-align: right;">
+            <span class="receipt-label">Est. Ready Time</span>
+            <strong class="receipt-time-val"><i class="fas fa-clock"></i> 20-25 Mins</strong>
+          </div>
+        </div>
+
+        <div class="receipt-divider"></div>
+
+        <div class="receipt-details-list" id="successItemsSummary">
+          <!-- Populated by JS -->
+        </div>
+
+        <div class="receipt-divider"></div>
+
+        <div class="receipt-total-row">
+          <span>Total Amount to Pay</span>
+          <strong class="receipt-grand-total" id="successGrandTotal">₹0.00</strong>
+        </div>
+
+        <div class="receipt-customer-info" id="successCustomerDetails">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="success-actions-row">
+        <a href="index.html" class="btn btn-primary" style="flex: 1.2;">
+          <i class="fas fa-house"></i> Back to Home
+        </a>
+        <a href="tel:09886764280" class="btn btn-outline" style="flex: 1;">
+          <i class="fas fa-phone"></i> Call Kitchen
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- Scripts -->
+  <script src="js/api.js"></script>
+  <script src="js/cart-manager.js"></script>
+  <script src="js/cart.js"></script>
+</body>
+</html>
