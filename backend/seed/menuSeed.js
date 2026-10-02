@@ -722,12 +722,21 @@ const COUPONS_DATA = [
 ];
 
 async function seedDatabase() {
-  const mongoUri = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/zion_food_corner";
-  console.log(`[Seed]: Connecting to database at ${mongoUri}...`);
+  const mongoUri = process.env.MONGODB_URI;
+
+  if (!mongoUri) {
+    console.error("❌ [Seed Error]: MONGODB_URI is not defined in backend/.env");
+    console.error("Please provide your MongoDB Atlas connection string in backend/.env");
+    process.exit(1);
+  }
+
+  console.log("[Seed]: Connecting to MongoDB Atlas database...");
 
   try {
-    await mongoose.connect(mongoUri);
-    console.log("[Seed]: Database connected successfully.");
+    const conn = await mongoose.connect(mongoUri, {
+      serverSelectionTimeoutMS: 10000
+    });
+    console.log(`✓ [Seed]: MongoDB Atlas connected successfully (${conn.connection.host}/${conn.connection.name}).`);
 
     // 1. Seed Restaurant Info
     await Restaurant.deleteMany({});
@@ -749,10 +758,11 @@ async function seedDatabase() {
     await Coupon.insertMany(COUPONS_DATA);
     console.log(`✓ [Seed]: ${COUPONS_DATA.length} coupons seeded.`);
 
-    console.log("\n✨ [Seed Complete]: Zion Food Corner database is ready and up to date!");
+    console.log("\n✨ [Seed Complete]: Zion Food Corner database is ready and populated on MongoDB Atlas!");
     process.exit(0);
   } catch (error) {
-    console.error("❌ [Seed Error]:", error);
+    console.error("❌ [Seed Error]: MongoDB Atlas connection failed.");
+    console.error(`👉 ${error.message}`);
     process.exit(1);
   }
 }

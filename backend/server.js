@@ -12,7 +12,7 @@ dotenv.config({ path: path.join(__dirname, ".env") });
 const connectDB = require("./config/db");
 const { notFoundHandler, errorHandler } = require("./middleware/errorMiddleware");
 
-// Authentication & Core API Routes (Active)
+// Authentication & Core API Routes
 const authRoutes = require("./routes/authRoutes");
 const restaurantRoutes = require("./routes/restaurantRoutes");
 const categoryRoutes = require("./routes/categoryRoutes");
@@ -24,9 +24,6 @@ const feedbackRoutes = require("./routes/feedbackRoutes");
 // 2. Initialize App
 const app = express();
 const PORT = process.env.PORT || 5000;
-
-// Connect to MongoDB
-connectDB();
 
 // 3. Security & Global Middleware
 app.use(
@@ -113,9 +110,13 @@ app.get("/", (req, res) => {
 app.use(notFoundHandler);
 app.use(errorHandler);
 
-// 7. Start Server
-const server = app.listen(PORT, () => {
-  console.log(`
+// 7. Connect to MongoDB Atlas and Start Server
+const startServer = async () => {
+  try {
+    await connectDB();
+
+    app.listen(PORT, () => {
+      console.log(`
 =====================================================
   🍛 ZION FOOD CORNER - RESTAURANT API SERVER
 =====================================================
@@ -125,8 +126,15 @@ const server = app.listen(PORT, () => {
   [API Root]    : http://localhost:${PORT}/api
   [Health]      : http://localhost:${PORT}/api/health
 =====================================================
-  `);
-});
+      `);
+    });
+  } catch (error) {
+    console.error("Failed to start server due to database connection error.");
+    process.exit(1);
+  }
+};
+
+startServer();
 
 // Handle unhandled promise rejections
 process.on("unhandledRejection", (err) => {

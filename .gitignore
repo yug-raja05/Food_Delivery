@@ -1,14 +1,20 @@
-# Node modules
+# Node modules & build artifacts
 node_modules/
 backend/node_modules/
+frontend/node_modules/
+frontend/dist/
+dist/
 
-# Environment files
+# Environment files & secrets
 .env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env.*
+!.env.example
 backend/.env
+backend/.env.*
+!backend/.env.example
+frontend/.env
+frontend/.env.*
+!frontend/.env.example
 
 # Logs
 npm-debug.log*
